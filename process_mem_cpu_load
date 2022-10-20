@@ -1,0 +1,55 @@
+### most useful commands for process, cpu, memory, ... that I'm using most frequently ###
+
+# check pid of a process for example mongo
+piof service_name
+ps aux | grep -i service_name
+
+# check top five cpu using processes
+ps aux --sort=-pcpu | head -n 5
+
+# check top five memory using processes
+ps aux --sort=-pmem | head -n 5
+
+# killing process using kill and killadll cmds
+kill -9 pid
+killall process_name
+killall -9 process_name
+
+### SWAPPINESS
+# check swappiness value
+cat /proc/sys/vm/swappiness
+
+# edit swappiness value
+nano /proc/sys/vm/swappiness
+
+# check which process has the most swap :
+ps axo %cpu,%mem,command | sort -nr
+
+# check whcih process in using the most of the swap
+for file in /proc/*/status; do awk '/VmSwap|Name/{prontf $2 " " $3}END{print ""}' $file; done
+ 
+# check the proccess id (eg: pid is 77141)
+ps -p 77141 
+# if there was a swap it means that the process has used swap if not the process has not used the swap
+/proc/77141/ (+ tab twice ) 
+
+# Checking mem space
+free -m 
+free -h
+# Disable swap
+swapoff -a 
+# Wait for approximately 30 seconds and use free -m 
+# Enable swap
+swapon -a 
+
+# check load average
+uptime
+cat /proc/loadavg
+
+# check background processes
+jobs
+# bring a process forward
+fg job_number
+# get a process background such as htop (to run htop cmd in the background)
+htop &
+
