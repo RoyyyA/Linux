@@ -1,3 +1,3 @@
 # Linux
-Anything I found helpful during my task on linux distributions 
+Anything I found helpful during my tasks on linux distributions (mostly debian and ubuntu)
 
