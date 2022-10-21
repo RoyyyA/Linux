@@ -1,0 +1,52 @@
+# adding users
+# with adduser cmd, enter needed fields and user will be added 
+adduser
+# useradd cmd needs parameteres (-d is for user's home directory, -m for username)
+useradd -d /home/username -m username
+
+# deleting user
+userdel username
+# -r deletes user's home directory
+userdel -r username
+
+# files containing users information
+# keeps users UID, GID, exp date
+/etc/passwd
+# keeps users password hash
+/etc/shadow
+# anything in the following file will be copied to new users home directory (including 3 hidden files: .bashrc, .bash_logout, .profile)
+/etc/skel
+
+# change user password
+passwd -s username 
+# in case you are root user
+passwd
+
+# swith to a user
+su - username
+# to switch to root 
+sudo su
+
+# lock a user
+passwd -l username
+passwd -u username
+
+# view user info
+chage -l username
+
+# adding group 
+groupadd groupname
+
+# appending a user to secondary group (do not use without -a)
+usermod -aG groupname username
+# changing user primary group 
+usermod -g groupname username
+
+# remove a user from a group
+gpasswd -d username groupname
+
+# add a user to a group
+gpasswd -a username groupname
+
+# add a user to sudo group to have sudo permission
+usermod -aG sudo username
