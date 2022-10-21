@@ -34,6 +34,14 @@ passwd -u username
 # view user info
 chage -l username
 
+# edit /etc/sudoers
+visudo
+# a sample of /etc/sudoers
+# add a user to run one specific command with sudo permission (in this case "apt" command)
+%sudo ALL=(ALL:ALL) ALL
+root ALL=(ALL:ALL) ALL
+username hostname=(username:usergroupname) /usr/bin/apt
+
 # adding group 
 groupadd groupname
 
@@ -50,3 +58,10 @@ gpasswd -a username groupname
 
 # add a user to sudo group to have sudo permission
 usermod -aG sudo username
+
+# change a file ownership
+chown username:groupname filename
+
+# a frequently used scenario
+# give everu file in the path 644 permission
+find /path/to/dir/ -type f -exec chmod 644 {};
